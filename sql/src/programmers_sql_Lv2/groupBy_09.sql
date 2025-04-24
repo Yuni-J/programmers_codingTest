@@ -1,5 +1,4 @@
-/* 입양 시각 구하기(1)
- */
+/* 입양 시각 구하기(1) */
 
 SELECT 
     HOUR(DATETIME) AS HOUR	

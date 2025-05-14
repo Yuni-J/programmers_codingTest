@@ -1,0 +1,20 @@
+/* 언어별 개발자 분류하기 */
+
+SELECT 
+    CASE
+        WHEN MAX(CASE WHEN S.CATEGORY = 'Front End' THEN 1 ELSE 0 END) = 1
+            AND MAX(CASE WHEN S.NAME = 'Python' THEN 1 ELSE 0 END) = 1 THEN 'A'
+        WHEN MAX(CASE WHEN S.NAME = 'C#' THEN 1 ELSE 0 END) = 1 THEN 'B'
+        WHEN MAX(CASE WHEN S.CATEGORY = 'Front End' THEN 1 ELSE 0 END) = 1 THEN 'C'
+        ELSE NULL
+    END AS GRADE
+    , ID
+    , EMAIL
+FROM SKILLCODES AS S
+JOIN DEVELOPERS AS D
+    ON (D.SKILL_CODE & S.CODE) = S.CODE
+GROUP BY ID, EMAIL
+HAVING GRADE IS NOT NULL
+ORDER BY GRADE, ID;
+
+/* SQL 문법 요구사항 : SELECT절에 있는 비집계 컬럼은 GROUP BY에도 반드시 포함되어야 함 */

@@ -1,0 +1,24 @@
+package programmers01;
+
+import java.util.Arrays;
+
+public class Lv0_59 {
+    public int[] solution(int[] arr, int[][] intervals) {
+        
+        int a1 = intervals[0][0];
+        int a2 = intervals[0][1];
+        int b1 = intervals[1][0];
+        int b2 = intervals[1][1];
+
+        int[] arr_a = Arrays.copyOfRange(arr, a1, a2 + 1);
+        int[] arr_b = Arrays.copyOfRange(arr, b1, b2 + 1);      
+        int[] answer = new int[arr_a.length + arr_b.length];
+        
+        // System.arraycopy(원본배열, 원본시작위치, 대상배열, 대상시작위치, 복사길이);
+        System.arraycopy(arr_a, 0, answer, 0, arr_a.length);
+        System.arraycopy(arr_b, 0, answer, arr_a.length, arr_b.length);
+        
+
+        return answer;
+    }
+}

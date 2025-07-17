@@ -1,0 +1,16 @@
+package programmers01;
+
+public class Lv0_50 {
+	// 세로 읽기
+	
+    public String solution(String my_string, int m, int c) {
+        
+        StringBuilder result = new StringBuilder();
+        
+        for(int i = c - 1; i < my_string.length(); i += m){
+            result.append(my_string.charAt(i));
+        }
+        
+        return result.toString();
+    }
+}
